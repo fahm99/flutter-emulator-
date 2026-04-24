@@ -1,0 +1,231 @@
+{
+  "name": "flutter-multi-emulator",
+  "displayName": "Flutter Multi-Emulator",
+  "description": "A powerful VS Code extension for testing Flutter web apps with multiple device emulators, screen capture, and responsive design testing.",
+  "version": "1.0.0",
+  "publisher": "your-publisher",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "flutter",
+    "dart",
+    "web",
+    "emulator",
+    "mobile",
+    "multi-device"
+  ],
+  "icon": "media/logo.png",
+  "galleryBanner": {
+    "color": "#0175C2",
+    "theme": "dark"
+  },
+  "homepage": "https://your-project.vercel.app/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/flutter-multi-emulator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/flutter-multi-emulator/issues"
+  },
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "flutterMultiEmulator.start",
+        "title": "Flutter Multi-Emulator: Start",
+        "icon": "$(play)"
+      },
+      {
+        "command": "flutterMultiEmulator.reload",
+        "title": "Flutter Multi-Emulator: Reload"
+      },
+      {
+        "command": "flutterMultiEmulator.rotate",
+        "title": "Flutter Multi-Emulator: Rotate Device"
+      },
+      {
+        "command": "flutterMultiEmulator.screenshot",
+        "title": "Flutter Multi-Emulator: Take Screenshot"
+      },
+      {
+        "command": "flutterMultiEmulator.showAllDevices",
+        "title": "Flutter Multi-Emulator: Show All Devices"
+      },
+      {
+        "command": "flutterMultiEmulator.openWebsite",
+        "title": "Flutter Multi-Emulator: Open Website"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "flutterMultiEmulator.start",
+          "when": "resourceExtname == .dart",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "flutterMultiEmulator.reload",
+        "key": "ctrl+r",
+        "mac": "cmd+r",
+        "when": "resourceExtname == .dart"
+      },
+      {
+        "command": "flutterMultiEmulator.screenshot",
+        "key": "ctrl+shift+s",
+        "mac": "cmd+shift+s",
+        "when": "resourceExtname == .dart"
+      }
+    ],
+    "configuration": {
+      "title": "Flutter Multi-Emulator",
+      "properties": {
+        "flutterMultiEmulator.devicePresets": {
+          "type": "object",
+          "default": {
+            "iPhone 14 Pro": {
+              "width": 393,
+              "height": 852,
+              "devicePixelRatio": 3,
+              "type": "phone"
+            },
+            "iPhone 14 Pro Max": {
+              "width": 430,
+              "height": 932,
+              "devicePixelRatio": 3,
+              "type": "phone"
+            },
+            "iPhone SE": {
+              "width": 375,
+              "height": 667,
+              "devicePixelRatio": 2,
+              "type": "phone"
+            },
+            "iPad Pro 12.9": {
+              "width": 1024,
+              "height": 1366,
+              "devicePixelRatio": 2,
+              "type": "tablet"
+            },
+            "iPad Air": {
+              "width": 820,
+              "height": 1180,
+              "devicePixelRatio": 2,
+              "type": "tablet"
+            },
+            "iPad Mini": {
+              "width": 744,
+              "height": 1133,
+              "devicePixelRatio": 2,
+              "type": "tablet"
+            },
+            "Pixel 7": {
+              "width": 412,
+              "height": 915,
+              "devicePixelRatio": 2.6,
+              "type": "phone"
+            },
+            "Pixel 6": {
+              "width": 412,
+              "height": 915,
+              "devicePixelRatio": 2.6,
+              "type": "phone"
+            },
+            "Samsung Galaxy S23": {
+              "width": 360,
+              "height": 780,
+              "devicePixelRatio": 3,
+              "type": "phone"
+            },
+            "Samsung Galaxy S22 Ultra": {
+              "width": 384,
+              "height": 824,
+              "devicePixelRatio": 3.5,
+              "type": "phone"
+            },
+            "Samsung Galaxy Tab S8": {
+              "width": 800,
+              "height": 1280,
+              "devicePixelRatio": 2,
+              "type": "tablet"
+            },
+            "OnePlus 11": {
+              "width": 412,
+              "height": 915,
+              "devicePixelRatio": 2.6,
+              "type": "phone"
+            },
+            "Xiaomi 13": {
+              "width": 360,
+              "height": 780,
+              "devicePixelRatio": 3,
+              "type": "phone"
+            },
+            "Huawei P50": {
+              "width": 360,
+              "height": 780,
+              "devicePixelRatio": 3,
+              "type": "phone"
+            }
+          },
+          "description": "Predefined device configurations (phones and tablets)"
+        },
+        "flutterMultiEmulator.defaultDevice": {
+          "type": "string",
+          "default": "iPhone 14 Pro",
+          "description": "Default device to use"
+        },
+        "flutterMultiEmulator.autoReload": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable automatic reload on save"
+        },
+        "flutterMultiEmulator.enableScreenshot": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable screenshot capture functionality"
+        },
+        "flutterMultiEmulator.screenshotFolder": {
+          "type": "string",
+          "default": "${workspaceFolder}/screenshots",
+          "description": "Folder to save screenshots"
+        },
+        "flutterMultiEmulator.customFlags": {
+          "type": "array",
+          "default": [],
+          "description": "Additional flags for Flutter development server"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "echo \"No linting configured\"",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.19.9",
+    "@types/vscode": "^1.103.0",
+    "@vscode/test-electron": "^2.5.2",
+    "glob": "^7.2.3",
+    "mocha": "^10.2.0",
+    "typescript": "^5.8.3"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "vscode-test": "^1.6.1"
+  }
+}

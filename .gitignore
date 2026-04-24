@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+# out/
+dist/
+
+# VS Code
+.vscode-test/
+*.vsix
+
+# Logs
+*.log
+npm-debug.log*
+
+# System
+.DS_Store
+Thumbs.db
+
+# Screenshots (generated at runtime)
+screenshots/
+
+# Test
+coverage/
